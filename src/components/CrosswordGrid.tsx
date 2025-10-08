@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useRef } from 'react';
-import { PuzzleCell } from '../types/puzzle';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { PuzzleCell, Clue } from '../types/puzzle';
 
 interface CrosswordGridProps {
-  size: 5 | 7;
+  size: 5 | 7 | 8;
   grid: PuzzleCell[][];
+  clues: Clue[];
   onCellClick?: (row: number, col: number) => void;
   onCellInput?: (row: number, col: number, value: string) => void;
   selectedCell?: [number, number] | null;
@@ -14,6 +15,7 @@ interface CrosswordGridProps {
 export const CrosswordGrid: React.FC<CrosswordGridProps> = ({
   size,
   grid,
+  clues,
   onCellClick,
   onCellInput,
   selectedCell,
@@ -21,6 +23,7 @@ export const CrosswordGrid: React.FC<CrosswordGridProps> = ({
   onDirectionChange,
 }) => {
   const gridRef = useRef<HTMLDivElement>(null);
+  const [hoveredWord, setHoveredWord] = useState<{row: number, col: number, direction: 'across' | 'down'} | null>(null);
 
   const handleCellClick = useCallback((row: number, col: number) => {
     if (grid[row][col].isBlack) return;
@@ -149,6 +152,52 @@ export const CrosswordGrid: React.FC<CrosswordGridProps> = ({
     }
   }, [selectedCell]);
 
+  // Find which clue(s) a cell belongs to
+  const findCluesForCell = useCallback((row: number, col: number): Clue[] => {
+    return clues.filter(clue => {
+      const { startRow, startCol, answer, direction } = clue;
+      
+      if (direction === 'across') {
+        return row === startRow && col >= startCol && col < startCol + answer.length;
+      } else {
+        return col === startCol && row >= startRow && row < startRow + answer.length;
+      }
+    });
+  }, [clues]);
+
+  // Check if cell is part of the currently hovered word
+  const isCellInHoveredWord = useCallback((row: number, col: number): boolean => {
+    if (!hoveredWord) return false;
+    
+    const cellClues = findCluesForCell(row, col);
+    return cellClues.some(clue => 
+      clue.startRow === hoveredWord.row && 
+      clue.startCol === hoveredWord.col && 
+      clue.direction === hoveredWord.direction
+    );
+  }, [hoveredWord, findCluesForCell]);
+
+  // Handle mouse enter on cell
+  const handleCellMouseEnter = useCallback((row: number, col: number) => {
+    if (grid[row][col].isBlack) return;
+    
+    const cellClues = findCluesForCell(row, col);
+    if (cellClues.length > 0) {
+      // Prefer the clue that matches current direction, or take the first one
+      const preferredClue = cellClues.find(clue => clue.direction === direction) || cellClues[0];
+      setHoveredWord({
+        row: preferredClue.startRow,
+        col: preferredClue.startCol,
+        direction: preferredClue.direction
+      });
+    }
+  }, [grid, findCluesForCell, direction]);
+
+  // Handle mouse leave
+  const handleMouseLeave = useCallback(() => {
+    setHoveredWord(null);
+  }, []);
+
   const isCellSelected = (row: number, col: number) => {
     return selectedCell && selectedCell[0] === row && selectedCell[1] === col;
   };
@@ -159,8 +208,8 @@ export const CrosswordGrid: React.FC<CrosswordGridProps> = ({
         ref={gridRef}
         className={`
           grid gap-1 
-          ${size === 5 ? 'grid-cols-5' : 'grid-cols-7'} 
-          w-fit border-2 border-gray-800 p-2 bg-white rounded-lg shadow-lg
+          ${size === 5 ? 'grid-cols-5' : size === 7 ? 'grid-cols-7' : 'grid-cols-8'} 
+          w-fit border-2 border-gray-800 dark:border-gray-200 p-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg
         `}
       >
         {grid.map((row, rowIndex) =>
@@ -171,20 +220,22 @@ export const CrosswordGrid: React.FC<CrosswordGridProps> = ({
                 relative w-12 h-12 border border-gray-400
                 ${cell.isBlack 
                   ? 'bg-black' 
-                  : 'bg-white hover:bg-gray-50 cursor-pointer'
-                }
-                ${isCellSelected(rowIndex, colIndex)
-                  ? 'ring-2 ring-blue-500 bg-blue-50'
-                  : ''
-                }
+                  : isCellSelected(rowIndex, colIndex)
+                  ? 'ring-2 ring-blue-500 bg-blue-50 dark:bg-blue-900'
+                  : isCellInHoveredWord(rowIndex, colIndex)
+                  ? 'bg-yellow-100 dark:bg-yellow-900 hover:bg-yellow-150 dark:hover:bg-yellow-800'
+                  : 'bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'
+                } cursor-pointer
               `}
               onClick={() => handleCellClick(rowIndex, colIndex)}
+              onMouseEnter={() => handleCellMouseEnter(rowIndex, colIndex)}
+              onMouseLeave={handleMouseLeave}
             >
               {!cell.isBlack && (
                 <>
                   {/* Cell number */}
                   {cell.number && (
-                    <span className="absolute top-0 left-0.5 text-xs font-bold text-gray-700 leading-none">
+                    <span className="absolute top-0 left-0.5 text-xs font-bold text-gray-700 dark:text-gray-300 leading-none">
                       {cell.number}
                     </span>
                   )}
@@ -200,8 +251,8 @@ export const CrosswordGrid: React.FC<CrosswordGridProps> = ({
                     data-col={colIndex}
                     className="
                       w-full h-full bg-transparent border-none outline-none 
-                      text-center text-lg font-bold text-gray-900
-                      focus:bg-blue-50 cursor-pointer
+                      text-center text-lg font-bold text-gray-900 dark:text-white
+                      focus:bg-blue-50 dark:focus:bg-blue-900 cursor-pointer
                     "
                     maxLength={1}
                     autoComplete="off"
@@ -216,11 +267,11 @@ export const CrosswordGrid: React.FC<CrosswordGridProps> = ({
       
       {/* Direction indicator */}
       <div className="ml-4 flex flex-col justify-center">
-        <div className="text-sm text-gray-600 mb-2">Direction:</div>
-        <div className="text-lg font-semibold text-blue-600 capitalize">
+        <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Direction:</div>
+        <div className="text-lg font-semibold text-blue-600 dark:text-blue-400 capitalize">
           {direction}
         </div>
-        <div className="text-xs text-gray-500 mt-1">
+        <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">
           (Press Space to toggle)
         </div>
       </div>

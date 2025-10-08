@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react'
-import { CrosswordGrid } from './components/CrosswordGrid'
+import { CrosswordGrid } from './compo          <div className="text-sm text-gray-500 dark:text-gray-400">
+            {currentPuzzle.title} • {currentPuzzle.date}
+          </div>ts/CrosswordGrid'
 import { CluePanel } from './components/CluePanel'
 import { Timer } from './components/Timer'
 import { PuzzleSelector } from './components/PuzzleSelector'
+import { CreatorModal } from './components/creator/CreatorModal'
+import { ThemeToggle } from './components/ThemeToggle'
 import { Clue } from './types/puzzle'
 import { useGameStore } from './store/gameStore'
 import { PuzzleService } from './services/puzzleService'
 
 function App() {
   const [showPuzzleSelector, setShowPuzzleSelector] = useState(false);
+  const [showCreator, setShowCreator] = useState(false);
   
   const {
     currentPuzzle,
@@ -62,19 +67,20 @@ function App() {
 
   if (!currentPuzzle || userGrid.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-lg">Loading puzzle...</div>
+          <div className="text-lg dark:text-white">Loading puzzle...</div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8 transition-colors">
+      <ThemeToggle />
       <div className="container mx-auto px-4">
         <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
             Daily Mini Crossword
           </h1>
           <div className="mt-4 text-sm text-gray-500">
@@ -86,13 +92,19 @@ function App() {
             <Timer startTime={startTime} isCompleted={isCompleted} />
             <button
               onClick={() => setShowPuzzleSelector(true)}
-              className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-medium transition-colors"
+              className="px-4 py-2 bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors"
             >
               Choose Puzzle
             </button>
             <button
+              onClick={() => setShowCreator(true)}
+              className="px-4 py-2 bg-purple-500 hover:bg-purple-600 dark:bg-purple-600 dark:hover:bg-purple-700 text-white rounded-lg text-sm font-medium transition-colors"
+            >
+              Create Puzzle
+            </button>
+            <button
               onClick={resetPuzzle}
-              className="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-lg text-sm font-medium transition-colors"
+              className="px-4 py-2 bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white rounded-lg text-sm font-medium transition-colors"
             >
               Reset
             </button>
@@ -105,10 +117,11 @@ function App() {
         </header>
         
         <main className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-6">
             <CrosswordGrid
               size={currentPuzzle.size}
               grid={userGrid}
+              clues={currentPuzzle.clues}
               onCellClick={handleCellClick}
               onCellInput={handleCellInput}
               selectedCell={selectedCell}
@@ -141,6 +154,14 @@ function App() {
             currentPuzzle={currentPuzzle}
             onPuzzleSelect={handlePuzzleSelect}
             onClose={() => setShowPuzzleSelector(false)}
+          />
+        )}
+
+        {/* Creator Modal */}
+        {showCreator && (
+          <CreatorModal
+            isOpen={showCreator}
+            onClose={() => setShowCreator(false)}
           />
         )}
       </div>

@@ -8,7 +8,7 @@ import {
 } from '../data/puzzles';
 
 export interface PuzzleFilter {
-  size?: 5 | 7;
+  size?: 5 | 7 | 8;
   date?: string;
   author?: string;
 }

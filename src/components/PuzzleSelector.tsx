@@ -13,7 +13,7 @@ export const PuzzleSelector: React.FC<PuzzleSelectorProps> = ({
   onPuzzleSelect,
   onClose
 }) => {
-  const [selectedFilter, setSelectedFilter] = useState<'all' | 'size5' | 'size7' | 'today'>('all');
+  const [selectedFilter, setSelectedFilter] = useState<'all' | 'size8' | 'today'>('all');
   const [puzzles, setPuzzles] = useState<Puzzle[]>(() => PuzzleService.getAllPuzzles());
 
   const handleFilterChange = (filter: typeof selectedFilter) => {
@@ -23,11 +23,8 @@ export const PuzzleSelector: React.FC<PuzzleSelectorProps> = ({
       case 'all':
         setPuzzles(PuzzleService.getAllPuzzles());
         break;
-      case 'size5':
-        setPuzzles(PuzzleService.getAllPuzzles({ size: 5 }));
-        break;
-      case 'size7':
-        setPuzzles(PuzzleService.getAllPuzzles({ size: 7 }));
+      case 'size8':
+        setPuzzles(PuzzleService.getAllPuzzles({ size: 8 }));
         break;
       case 'today':
         const todaysPuzzle = PuzzleService.getTodaysPuzzle();
@@ -42,9 +39,7 @@ export const PuzzleSelector: React.FC<PuzzleSelectorProps> = ({
   };
 
   const handleRandomPuzzle = () => {
-    const filter = selectedFilter === 'size5' ? { size: 5 as const } :
-                   selectedFilter === 'size7' ? { size: 7 as const } : 
-                   undefined;
+    const filter = selectedFilter === 'size8' ? { size: 8 as const } : undefined;
     const randomPuzzle = PuzzleService.getRandomPuzzle(filter);
     onPuzzleSelect(randomPuzzle);
     onClose();
@@ -88,24 +83,14 @@ export const PuzzleSelector: React.FC<PuzzleSelectorProps> = ({
               Today's Puzzle
             </button>
             <button
-              onClick={() => handleFilterChange('size5')}
+              onClick={() => handleFilterChange('size8')}
               className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
-                selectedFilter === 'size5' 
+                selectedFilter === 'size8' 
                   ? 'bg-blue-100 text-blue-800' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              5×5 Mini
-            </button>
-            <button
-              onClick={() => handleFilterChange('size7')}
-              className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
-                selectedFilter === 'size7' 
-                  ? 'bg-blue-100 text-blue-800' 
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              7×7 Challenge
+              8×8 Daily
             </button>
             <button
               onClick={handleRandomPuzzle}
@@ -147,7 +132,9 @@ export const PuzzleSelector: React.FC<PuzzleSelectorProps> = ({
                     <span className={`px-2 py-1 rounded text-xs font-medium ${
                       puzzle.size === 5 
                         ? 'bg-green-100 text-green-800' 
-                        : 'bg-purple-100 text-purple-800'
+                        : puzzle.size === 7
+                        ? 'bg-purple-100 text-purple-800'
+                        : 'bg-blue-100 text-blue-800'
                     }`}>
                       {puzzle.size}×{puzzle.size}
                     </span>

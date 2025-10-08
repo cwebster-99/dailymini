@@ -3,41 +3,186 @@ import { Puzzle } from '../types/puzzle';
 // Sample puzzle collection - you can expand this or load from JSON/API
 export const puzzleCollection: Puzzle[] = [
   {
-    id: "daily-2025-09-24",
-    date: "2025-09-24",
-    size: 5,
-    title: "Daily Mini",
+    id: "daily-2025-09-29",
+    date: "2025-09-29",
+    size: 8,
+    title: "Daily Challenge",
     author: "Daily Team",
     grid: [
       [
         { letter: "C", isBlack: false, number: 1 },
-        { letter: "A", isBlack: false, number: 2 },
-        { letter: "R", isBlack: false },
-        { letter: "S", isBlack: false },
-        { letter: "", isBlack: true }
-      ],
-      [
-        { letter: "A", isBlack: false, number: 3 },
-        { letter: "R", isBlack: false },
+        { letter: "O", isBlack: false },
+        { letter: "M", isBlack: false },
+        { letter: "P", isBlack: false },
+        { letter: "U", isBlack: false },
+        { letter: "T", isBlack: false },
         { letter: "E", isBlack: false },
-        { letter: "A", isBlack: false },
-        { letter: "", isBlack: true }
+        { letter: "R", isBlack: false }
       ],
       [
-        { letter: "T", isBlack: false, number: 4 },
+        { letter: "A", isBlack: false, number: 2 },
+        { letter: "", isBlack: true },
+        { letter: "O", isBlack: false, number: 3 },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "H", isBlack: false, number: 4 },
+        { letter: "", isBlack: true },
+        { letter: "E", isBlack: false }
+      ],
+      [
+        { letter: "M", isBlack: false, number: 5 },
+        { letter: "E", isBlack: false },
+        { letter: "R", isBlack: false },
         { letter: "A", isBlack: false },
-        { letter: "X", isBlack: false },
-        { letter: "I", isBlack: false },
+        { letter: "", isBlack: true },
+        { letter: "E", isBlack: false },
+        { letter: "", isBlack: true },
+        { letter: "A", isBlack: false }
+      ],
+      [
+        { letter: "", isBlack: true },
+        { letter: "L", isBlack: false },
+        { letter: "E", isBlack: false },
+        { letter: "M", isBlack: false },
+        { letter: "O", isBlack: false },
+        { letter: "N", isBlack: false },
+        { letter: "", isBlack: true },
+        { letter: "D", isBlack: false }
+      ],
+      [
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "A", isBlack: false, number: 6 },
+        { letter: "", isBlack: true },
+        { letter: "C", isBlack: false, number: 7 },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "S", isBlack: false }
+      ],
+      [
+        { letter: "T", isBlack: false, number: 8 },
+        { letter: "A", isBlack: false },
+        { letter: "B", isBlack: false },
+        { letter: "L", isBlack: false },
+        { letter: "E", isBlack: false },
+        { letter: "T", isBlack: false },
+        { letter: "", isBlack: true },
         { letter: "", isBlack: true }
       ],
       [
         { letter: "", isBlack: true },
-        { letter: "T", isBlack: false, number: 5 },
-        { letter: "S", isBlack: false },
-        { letter: "K", isBlack: false },
+        { letter: "", isBlack: true },
+        { letter: "L", isBlack: false },
+        { letter: "", isBlack: true },
+        { letter: "A", isBlack: false },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
         { letter: "", isBlack: true }
       ],
       [
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "E", isBlack: false },
+        { letter: "", isBlack: true },
+        { letter: "R", isBlack: false },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true }
+      ]
+    ],
+    clues: [
+      { number: 1, text: "Electronic calculating machine", answer: "COMPUTER", direction: "across", startRow: 0, startCol: 0 },
+      { number: 5, text: "Just", answer: "MERE", direction: "across", startRow: 2, startCol: 0 },
+      { number: 8, text: "Portable computer", answer: "TABLET", direction: "across", startRow: 5, startCol: 0 },
+      { number: 2, text: "Breakfast food", answer: "MEAL", direction: "down", startRow: 1, startCol: 0 },
+      { number: 3, text: "Mouths", answer: "ORAL", direction: "down", startRow: 1, startCol: 2 },
+      { number: 4, text: "Opposite of cold", answer: "HEAT", direction: "down", startRow: 1, startCol: 5 },
+      { number: 6, text: "Skill", answer: "ABLE", direction: "down", startRow: 4, startCol: 2 },
+      { number: 7, text: "Automobile", answer: "CAR", direction: "down", startRow: 4, startCol: 4 }
+    ]
+  },
+  
+  {
+    id: "daily-2025-09-28",
+    date: "2025-09-28",
+    size: 8,
+    title: "Saturday Special",
+    author: "Daily Team",
+    grid: [
+      [
+        { letter: "B", isBlack: false, number: 1 },
+        { letter: "O", isBlack: false },
+        { letter: "O", isBlack: false },
+        { letter: "K", isBlack: false },
+        { letter: "S", isBlack: false },
+        { letter: "H", isBlack: false },
+        { letter: "E", isBlack: false },
+        { letter: "L", isBlack: false }
+      ],
+      [
+        { letter: "R", isBlack: false, number: 2 },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "O", isBlack: false, number: 3 },
+        { letter: "", isBlack: true },
+        { letter: "I", isBlack: false }
+      ],
+      [
+        { letter: "I", isBlack: false, number: 4 },
+        { letter: "C", isBlack: false },
+        { letter: "E", isBlack: false },
+        { letter: "C", isBlack: false },
+        { letter: "R", isBlack: false },
+        { letter: "E", isBlack: false },
+        { letter: "A", isBlack: false },
+        { letter: "M", isBlack: false }
+      ],
+      [
+        { letter: "D", isBlack: false },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "A", isBlack: false },
+        { letter: "", isBlack: true },
+        { letter: "E", isBlack: false }
+      ],
+      [
+        { letter: "G", isBlack: false, number: 5 },
+        { letter: "U", isBlack: false },
+        { letter: "I", isBlack: false },
+        { letter: "T", isBlack: false },
+        { letter: "A", isBlack: false },
+        { letter: "R", isBlack: false },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true }
+      ],
+      [
+        { letter: "E", isBlack: false },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true }
+      ],
+      [
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true }
+      ],
+      [
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
         { letter: "", isBlack: true },
         { letter: "", isBlack: true },
         { letter: "", isBlack: true },
@@ -46,129 +191,93 @@ export const puzzleCollection: Puzzle[] = [
       ]
     ],
     clues: [
-      { number: 1, text: "Automobiles", answer: "CARS", direction: "across", startRow: 0, startCol: 0 },
-      { number: 3, text: "Space or zone", answer: "AREA", direction: "across", startRow: 1, startCol: 0 },
-      { number: 4, text: "Cab", answer: "TAXI", direction: "across", startRow: 2, startCol: 0 },
-      { number: 5, text: "Question", answer: "ASK", direction: "across", startRow: 3, startCol: 1 },
-      { number: 1, text: "Feline", answer: "CAT", direction: "down", startRow: 0, startCol: 0 },
-      { number: 2, text: "Rodent", answer: "RAT", direction: "down", startRow: 0, startCol: 1 }
+      { number: 1, text: "Library furniture", answer: "BOOKSHEL", direction: "across", startRow: 0, startCol: 0 },
+      { number: 4, text: "Frozen dessert", answer: "ICECREAM", direction: "across", startRow: 2, startCol: 0 },
+      { number: 5, text: "Stringed instrument", answer: "GUITAR", direction: "across", startRow: 4, startCol: 0 },
+      { number: 2, text: "Connects", answer: "BRIDGE", direction: "down", startRow: 1, startCol: 0 },
+      { number: 3, text: "Ocean", answer: "HEAR", direction: "down", startRow: 1, startCol: 5 }
     ]
   },
-  
+
   {
-    id: "daily-2025-09-23",
-    date: "2025-09-23",
-    size: 5,
-    title: "Yesterday's Mini",
-    author: "Daily Team",
+    id: "daily-2025-09-27",
+    date: "2025-09-27",
+    size: 8,
+    title: "Friday Fun",
+    author: "Weekend Team",
     grid: [
       [
-        { letter: "D", isBlack: false, number: 1 },
-        { letter: "O", isBlack: false, number: 2 },
+        { letter: "K", isBlack: false, number: 1 },
+        { letter: "I", isBlack: false },
+        { letter: "T", isBlack: false },
+        { letter: "C", isBlack: false },
+        { letter: "H", isBlack: false },
+        { letter: "E", isBlack: false },
+        { letter: "N", isBlack: false },
+        { letter: "", isBlack: true }
+      ],
+      [
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "H", isBlack: false, number: 2 },
+        { letter: "", isBlack: true },
+        { letter: "A", isBlack: false, number: 3 },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true }
+      ],
+      [
+        { letter: "G", isBlack: false, number: 4 },
+        { letter: "A", isBlack: false },
+        { letter: "R", isBlack: false },
+        { letter: "D", isBlack: false },
+        { letter: "E", isBlack: false },
+        { letter: "N", isBlack: false },
+        { letter: "S", isBlack: false },
+        { letter: "", isBlack: true }
+      ],
+      [
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "A", isBlack: false },
+        { letter: "", isBlack: true },
         { letter: "G", isBlack: false },
         { letter: "", isBlack: true },
         { letter: "", isBlack: true }
       ],
       [
-        { letter: "A", isBlack: false, number: 3 },
-        { letter: "P", isBlack: false },
-        { letter: "E", isBlack: false },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true }
-      ],
-      [
-        { letter: "Y", isBlack: false, number: 4 },
-        { letter: "E", isBlack: false },
-        { letter: "S", isBlack: false },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true }
-      ],
-      [
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true }
-      ],
-      [
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true }
-      ]
-    ],
-    clues: [
-      { number: 1, text: "Canine pet", answer: "DOG", direction: "across", startRow: 0, startCol: 0 },
-      { number: 3, text: "Primate", answer: "APE", direction: "across", startRow: 1, startCol: 0 },
-      { number: 4, text: "Affirmative", answer: "YES", direction: "across", startRow: 2, startCol: 0 },
-      { number: 1, text: "24 hours", answer: "DAY", direction: "down", startRow: 0, startCol: 0 },
-      { number: 2, text: "Cooking vessel", answer: "POT", direction: "down", startRow: 0, startCol: 1 }
-    ]
-  },
-
-  {
-    id: "weekend-2025-09-22",
-    date: "2025-09-22",
-    size: 7,
-    title: "Weekend Challenge",
-    author: "Weekend Team",
-    grid: [
-      [
-        { letter: "R", isBlack: false, number: 1 },
-        { letter: "E", isBlack: false },
-        { letter: "A", isBlack: false },
-        { letter: "D", isBlack: false },
+        { letter: "W", isBlack: false, number: 5 },
         { letter: "I", isBlack: false },
         { letter: "N", isBlack: false },
-        { letter: "G", isBlack: false }
-      ],
-      [
-        { letter: "O", isBlack: false, number: 2 },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true },
-        { letter: "C", isBlack: false },
-        { letter: "", isBlack: true },
-        { letter: "A", isBlack: false }
-      ],
-      [
-        { letter: "C", isBlack: false, number: 3 },
-        { letter: "K", isBlack: false },
-        { letter: "E", isBlack: false },
         { letter: "T", isBlack: false },
-        { letter: "S", isBlack: false },
-        { letter: "", isBlack: true },
-        { letter: "M", isBlack: false }
-      ],
-      [
-        { letter: "K", isBlack: false },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true },
-        { letter: "", isBlack: true },
-        { letter: "E", isBlack: false }
-      ],
-      [
-        { letter: "S", isBlack: false, number: 4 },
-        { letter: "T", isBlack: false },
-        { letter: "O", isBlack: false },
-        { letter: "N", isBlack: false },
         { letter: "E", isBlack: false },
+        { letter: "R", isBlack: false },
         { letter: "", isBlack: true },
-        { letter: "S", isBlack: false }
+        { letter: "", isBlack: true }
       ],
       [
         { letter: "", isBlack: true },
         { letter: "", isBlack: true },
         { letter: "", isBlack: true },
+        { letter: "E", isBlack: false },
         { letter: "", isBlack: true },
         { letter: "", isBlack: true },
         { letter: "", isBlack: true },
         { letter: "", isBlack: true }
       ],
       [
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "R", isBlack: false },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true },
+        { letter: "", isBlack: true }
+      ],
+      [
+        { letter: "", isBlack: true },
         { letter: "", isBlack: true },
         { letter: "", isBlack: true },
         { letter: "", isBlack: true },
@@ -179,11 +288,11 @@ export const puzzleCollection: Puzzle[] = [
       ]
     ],
     clues: [
-      { number: 1, text: "Activity with books", answer: "READING", direction: "across", startRow: 0, startCol: 0 },
-      { number: 3, text: "Space program vehicles", answer: "ROCKETS", direction: "across", startRow: 2, startCol: 0 },
-      { number: 4, text: "Rock or pebble", answer: "STONE", direction: "across", startRow: 4, startCol: 0 },
-      { number: 2, text: "Big cat", answer: "LION", direction: "down", startRow: 1, startCol: 0 },
-      { number: 1, text: "Opposite of blue", answer: "RED", direction: "down", startRow: 0, startCol: 0 }
+      { number: 1, text: "Room for cooking", answer: "KITCHEN", direction: "across", startRow: 0, startCol: 0 },
+      { number: 4, text: "Outdoor plant spaces", answer: "GARDENS", direction: "across", startRow: 2, startCol: 0 },
+      { number: 5, text: "Cold season", answer: "WINTER", direction: "across", startRow: 4, startCol: 0 },
+      { number: 2, text: "Baby goat", answer: "CHEATER", direction: "down", startRow: 1, startCol: 3 },
+      { number: 3, text: "Long time period", answer: "AGER", direction: "down", startRow: 1, startCol: 5 }
     ]
   }
 ];
@@ -206,6 +315,6 @@ export const getAllPuzzles = (): Puzzle[] => {
   return [...puzzleCollection];
 };
 
-export const getPuzzlesBySize = (size: 5 | 7): Puzzle[] => {
+export const getPuzzlesBySize = (size: 5 | 7 | 8): Puzzle[] => {
   return puzzleCollection.filter(puzzle => puzzle.size === size);
 };

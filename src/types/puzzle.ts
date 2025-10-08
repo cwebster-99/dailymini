@@ -17,7 +17,7 @@ export interface Clue {
 export interface Puzzle {
   id: string;
   date: string;
-  size: 5 | 7;
+  size: 5 | 7 | 8;
   grid: PuzzleCell[][];
   clues: Clue[];
   title?: string;
