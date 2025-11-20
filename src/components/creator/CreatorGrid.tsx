@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { CreatorCell } from '../../types/creator';
 
 interface CreatorGridProps {
-  size: 5 | 7 | 8;
+  size: 5 | 7 | 8 | 10;
   grid: CreatorCell[][];
   selectedCell?: [number, number] | null;
   onCellClick?: (row: number, col: number) => void;
@@ -86,7 +86,7 @@ export const CreatorGrid: React.FC<CreatorGridProps> = ({
       <div 
         className={`
           grid gap-1 
-          ${size === 5 ? 'grid-cols-5' : size === 7 ? 'grid-cols-7' : 'grid-cols-8'} 
+          ${size === 5 ? 'grid-cols-5' : size === 7 ? 'grid-cols-7' : size === 8 ? 'grid-cols-8' : 'grid-cols-10'} 
           w-fit border-2 border-gray-800 p-2 bg-white rounded-lg shadow-lg
         `}
       >

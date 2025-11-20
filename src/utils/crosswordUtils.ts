@@ -85,7 +85,7 @@ export function validateCrosswordNumbering(puzzle: Puzzle): string[] {
  * This is useful when creating puzzles programmatically
  */
 export function createNumberedCrossword(
-  size: 5 | 7 | 8,
+  size: 5 | 7 | 8 | 10,
   gridPattern: boolean[][], // true = white cell, false = black cell
   clueData: Omit<Clue, 'number'>[], // clues without numbers
   metadata: { id: string; date: string; title?: string; author?: string }

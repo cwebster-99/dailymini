@@ -130,7 +130,7 @@ export interface CreatorSettings {
   showGridNumbers: boolean;
   highlightWords: boolean;
   validateRealTime: boolean;
-  defaultSize: 5 | 7 | 8;
+  defaultSize: 5 | 7 | 8 | 10;
   defaultAuthor: string;
 }
 

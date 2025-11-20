@@ -315,6 +315,6 @@ export const getAllPuzzles = (): Puzzle[] => {
   return [...puzzleCollection];
 };
 
-export const getPuzzlesBySize = (size: 5 | 7 | 8): Puzzle[] => {
+export const getPuzzlesBySize = (size: 5 | 7 | 8 | 10): Puzzle[] => {
   return puzzleCollection.filter(puzzle => puzzle.size === size);
 };
