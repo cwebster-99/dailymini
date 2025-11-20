@@ -41,7 +41,7 @@ interface CreatorState {
   
   // Actions
   // Puzzle management
-  createPuzzle: (size?: 5 | 7 | 8, title?: string, author?: string) => void;
+  createPuzzle: (size?: 5 | 7 | 8 | 10, title?: string, author?: string) => void;
   loadPuzzle: (puzzle: CreatorPuzzle | SavedPuzzle) => void;
   savePuzzle: (publish?: boolean) => Promise<boolean>;
   exportPuzzle: () => void;
@@ -50,7 +50,7 @@ interface CreatorState {
   toggleCell: (row: number, col: number) => void;
   setCellLetter: (row: number, col: number, letter: string) => void;
   clearCell: (row: number, col: number) => void;
-  resizeGrid: (newSize: 5 | 7 | 8) => void;
+  resizeGrid: (newSize: 5 | 7 | 8 | 10) => void;
   
   // Clue management
   addClue: (startRow: number, startCol: number, direction: 'across' | 'down', text: string, answer: string) => void;
@@ -79,7 +79,7 @@ interface CreatorState {
   saveNow: () => void;
   
   // Utility
-  updateMetadata: (updates: { title?: string; author?: string; size?: 5 | 7 | 8 }) => void;
+  updateMetadata: (updates: { title?: string; author?: string; size?: 5 | 7 | 8 | 10 }) => void;
   resetPuzzle: () => void;
   clearAll: () => void;
 }

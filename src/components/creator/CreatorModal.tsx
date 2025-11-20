@@ -11,7 +11,7 @@ export const CreatorModal: React.FC<CreatorModalProps> = ({ isOpen, onClose }) =
   const [newPuzzleForm, setNewPuzzleForm] = useState({
     title: '',
     author: '',
-    size: 8 as 5 | 7 | 8
+    size: 8 as 5 | 7 | 8 | 10
   });
 
   const {
@@ -132,12 +132,13 @@ export const CreatorModal: React.FC<CreatorModalProps> = ({ isOpen, onClose }) =
                   </label>
                   <select
                     value={newPuzzleForm.size}
-                    onChange={(e) => setNewPuzzleForm(prev => ({ ...prev, size: Number(e.target.value) as 5 | 7 | 8 }))}
+                    onChange={(e) => setNewPuzzleForm(prev => ({ ...prev, size: Number(e.target.value) as 5 | 7 | 8 | 10 }))}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value={5}>5×5 (Mini)</option>
                     <option value={7}>7×7 (Medium)</option>
                     <option value={8}>8×8 (Large)</option>
+                    <option value={10}>10×10 (Extra Large)</option>
                   </select>
                 </div>
 
@@ -183,12 +184,13 @@ export const CreatorModal: React.FC<CreatorModalProps> = ({ isOpen, onClose }) =
                     </label>
                     <select
                       value={currentPuzzle.size}
-                      onChange={(e) => updateMetadata({ size: Number(e.target.value) as 5 | 7 | 8 })}
+                      onChange={(e) => updateMetadata({ size: Number(e.target.value) as 5 | 7 | 8 | 10 })}
                       className="w-full px-3 py-1 border border-gray-300 rounded text-sm"
                     >
                       <option value={5}>5×5</option>
                       <option value={7}>7×7</option>
                       <option value={8}>8×8</option>
+                      <option value={10}>10×10</option>
                     </select>
                   </div>
                 </div>

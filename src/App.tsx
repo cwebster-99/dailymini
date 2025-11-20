@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-import { CrosswordGrid } from './compo          <div className="text-sm text-gray-500 dark:text-gray-400">
-            {currentPuzzle.title} • {currentPuzzle.date}
-          </div>ts/CrosswordGrid'
+import { CrosswordGrid } from './components/CrosswordGrid'
 import { CluePanel } from './components/CluePanel'
 import { Timer } from './components/Timer'
 import { PuzzleSelector } from './components/PuzzleSelector'

@@ -11,7 +11,7 @@ import { Puzzle, PuzzleCell } from '../types/puzzle';
 /**
  * Creates an empty crossword grid for the creator
  */
-export const createEmptyGrid = (size: 5 | 7 | 8): CreatorCell[][] => {
+export const createEmptyGrid = (size: 5 | 7 | 8 | 10): CreatorCell[][] => {
   return Array(size).fill(null).map(() =>
     Array(size).fill(null).map(() => ({
       letter: '',
@@ -407,7 +407,7 @@ export const generatePuzzleId = (title?: string): string => {
  * Creates a new empty creator puzzle
  */
 export const createNewPuzzle = (
-  size: 5 | 7 | 8 = 8, 
+  size: 5 | 7 | 8 | 10 = 8, 
   title: string = 'Untitled Puzzle',
   author: string = 'Anonymous'
 ): CreatorPuzzle => {

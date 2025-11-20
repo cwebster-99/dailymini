@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { PuzzleCell, Clue } from '../types/puzzle';
 
 interface CrosswordGridProps {
-  size: 5 | 7 | 8;
+  size: 5 | 7 | 8 | 10;
   grid: PuzzleCell[][];
   clues: Clue[];
   onCellClick?: (row: number, col: number) => void;
@@ -208,7 +208,7 @@ export const CrosswordGrid: React.FC<CrosswordGridProps> = ({
         ref={gridRef}
         className={`
           grid gap-1 
-          ${size === 5 ? 'grid-cols-5' : size === 7 ? 'grid-cols-7' : 'grid-cols-8'} 
+          ${size === 5 ? 'grid-cols-5' : size === 7 ? 'grid-cols-7' : size === 8 ? 'grid-cols-8' : 'grid-cols-10'} 
           w-fit border-2 border-gray-800 dark:border-gray-200 p-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg
         `}
       >
